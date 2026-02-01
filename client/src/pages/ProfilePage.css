@@ -1,0 +1,141 @@
+.profile-header {
+    position: relative;
+    margin-bottom: 80px;
+}
+
+.cover-image {
+    height: 200px;
+    background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+    border-radius: 15px;
+    width: 100%;
+}
+
+.profile-avatar-container {
+    position: absolute;
+    bottom: -60px;
+    left: 50px;
+    padding: 5px;
+    background: white;
+    border-radius: 50%;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+}
+
+.profile-info-header {
+    position: absolute;
+    bottom: -50px;
+    left: 190px;
+}
+
+.profile-name {
+    font-weight: 800;
+    margin-bottom: 0;
+    color: #212529;
+}
+
+.profile-role {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+@media (max-width: 768px) {
+    .profile-header {
+        margin-bottom: 140px;
+        /* Increase space for stacked content */
+        text-align: center;
+    }
+
+    .profile-avatar-container {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -60px;
+    }
+
+    .profile-info-header {
+        left: 0;
+        right: 0;
+        bottom: -120px;
+        /* Move text below avatar */
+        text-align: center;
+    }
+}
+
+.nav-tabs-custom .nav-link {
+    color: #6c757d;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+}
+
+.nav-tabs-custom .nav-link.active {
+    color: #0d6efd;
+    border-bottom: 3px solid #0d6efd;
+    background: transparent;
+}
+
+.nav-tabs-custom .nav-link:hover {
+    border-color: transparent;
+    color: #0d6efd;
+}
+
+.listing-placeholder {
+    text-align: center;
+    padding: 3rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 2px dashed #dee2e6;
+}
+
+.bg-dark .listing-placeholder {
+    background: #2b3035;
+    border-color: #495057;
+}
+
+.invert-filter {
+    filter: invert(1);
+}
+
+.listings-scroll-container {
+    max-height: 800px;
+    overflow-y: auto;
+    padding-right: 10px;
+    /* Avoid scrollbar overlapping content */
+}
+
+/* Custom Scrollbar for Listings Container */
+.listings-scroll-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.listings-scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.listings-scroll-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.listings-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.bg-dark .listings-scroll-container::-webkit-scrollbar-track {
+    background: #2b3035;
+}
+
+.bg-dark .listings-scroll-container::-webkit-scrollbar-thumb {
+    background: #495057;
+}
+
+.bg-dark .listings-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #6c757d;
+}
