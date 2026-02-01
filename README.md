@@ -125,14 +125,14 @@
 ### 🔍 Find A Room
 *Browse listings with advanced filters, sorting, and map view*
 
-<img src="./images/screenshots/listings.png" alt="Listings Page" width="90%" />
+<img src="./images/screenshots/roomlisting.png" alt="Listings Page" width="90%" />
 
 ---
 
 ### 📋 Listing Details
 *Detailed property view with gallery, amenities, map, and booking options*
 
-<img src="./images/screenshots/listing-details.png" alt="Listing Details" width="90%" />
+<img src="./images/screenshots/detail-listing.png" alt="Listing Details" width="90%" />
 
 ---
 
