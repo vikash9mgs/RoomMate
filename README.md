@@ -17,7 +17,7 @@
 
 ---
 
-<img src="./images/screenshots/homepage.png" alt="RoomMate Platform Preview" width="100%" />
+<img src="./images/screenshots/homepagevikash.png" alt="RoomMate Platform Preview" width="100%" />
 
 </div>
 
@@ -118,7 +118,7 @@
 ### 🏠 Homepage
 *Modern landing page with hero section, featured listings, and community stats*
 
-<img src="./images/screenshots/homepage.png" alt="Homepage" width="90%" />
+<img src="./images/screenshots/homepagevikash.png" alt="Homepage" width="90%" />
 
 ---
 
@@ -170,7 +170,6 @@
 <p>
 <img src="./images/screenshots/mobile-home.png" alt="Mobile Home" width="30%" />
 <img src="./images/screenshots/mobile-details.png" alt="Mobile Listings" width="30%" />
-<img src="./images/screenshots/mobile-profile.png" alt="Mobile Details" width="30%" />
 </p>
 
 </div>
@@ -231,7 +230,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/akash9569/RoomMate.git
+git clone https://github.com/vikash9mgs/RoomMate.git
 cd RoomMate
 ```
 
@@ -388,12 +387,12 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 
 <div align="center">
 
-### Akash Singh
+### Vikash Vishwakarma
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://akashsingh.dev)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/iamakashsingh9)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/akash9569)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:akashsingh.internship@gmail.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://portfolio-cyan-eight-55.vercel.app/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vikash-vishwakarma99/?trk=opento_sprofile_details)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/vikash9mgs)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:vikashvishwakarma7668@gmail.com)
 
 </div>
 
@@ -418,10 +417,10 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 
 <br />
 
-**Made with ❤️ by [Akash Singh](https://github.com/akash9569)**
+**Made with ❤️ by [Vikash Vishwakarma](https://github.com/vikash9mgs)**
 
 <br />
 
-![Visitors](https://api.visitorbadge.io/api/visitors?path=akash9569%2FRoomMate&label=Visitors&labelColor=%23697689&countColor=%23263759)
+![Visitors](https://api.visitorbadge.io/api/visitors?path=vikash9mgs%2FRoomMate&label=Visitors&labelColor=%23697689&countColor=%23263759)
 
 </div>
