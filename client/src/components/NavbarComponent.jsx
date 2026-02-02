@@ -135,7 +135,7 @@ const NavbarComponent = () => {
                           src={
                             user.profilePicture.startsWith("http")
                               ? user.profilePicture
-                              : `${import.meta.env.VITE_API_URL || "http://localhost:3000"}${user.profilePicture}`
+                                : `${import.meta.env.VITE_API_URL || ''}${user.profilePicture}`
                           }
                           alt={user.name}
                           className="w-100 h-100 object-fit-cover"

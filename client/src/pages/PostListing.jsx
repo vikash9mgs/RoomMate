@@ -4,6 +4,7 @@ import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { Container, Form, Button, Card, Row, Col, Alert, Spinner, InputGroup } from "react-bootstrap";
 import NavbarComponent from "../components/NavbarComponent";
 import Footer from "../components/Footer";
+import { uploadMultipleToS3 } from "../utils/uploadUtils";
 import { BsArrowLeft } from "react-icons/bs";
 
 const PostListing = () => {
@@ -78,20 +79,8 @@ const PostListing = () => {
     setUploading(true);
 
     try {
-      const uploadedUrls = await Promise.all(
-        files.map(async (file) => {
-          // Request presigned URL then upload directly to S3
-          const presignResp = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/upload`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ filename: file.name, fileType: file.type }),
-          });
-          if (!presignResp.ok) throw new Error('Failed to get upload URL');
-          const { uploadUrl, publicUrl } = await presignResp.json();
-          await fetch(uploadUrl, { method: 'PUT', headers: { 'Content-Type': file.type }, body: file });
-          return publicUrl;
-        })
-      );
+      const apiBase = import.meta.env.VITE_API_URL || '';
+      const uploadedUrls = await uploadMultipleToS3(files, apiBase);
 
       setFormData((prev) => ({
         ...prev,

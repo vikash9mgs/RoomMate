@@ -34,7 +34,7 @@ const AllListingsPage = () => {
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/listings");
+        const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/listings`);
         const data = await response.json();
         if (response.ok) {
           setListings(data);

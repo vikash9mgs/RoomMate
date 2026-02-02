@@ -45,7 +45,7 @@ const AIChatbot = ({ listing }) => {
         `;
 
         try {
-            const res = await fetch("http://localhost:3000/api/ask", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/ask`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ prompt: context }),

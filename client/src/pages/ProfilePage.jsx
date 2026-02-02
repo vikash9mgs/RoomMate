@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { BsPencilSquare, BsGear, BsGeoAlt, BsEnvelope, BsPhone, BsSave, BsXCircle, BsCardHeading, BsPlusLg, BsZoomIn, BsZoomOut } from "react-icons/bs";
 import ListingCard from "../components/ListingCard"; // Import ListingCard
 import { useTheme } from "../context/ThemeContext";
+import { uploadToS3 } from "../utils/uploadUtils";
 import "./ProfilePage.css";
 import Cropper from 'react-easy-crop';
 import getCroppedImg from '../utils/cropUtils';
@@ -107,22 +108,8 @@ const ProfilePage = () => {
             const fileName = `profile-${Date.now()}.jpg`;
             const file = new File([croppedImageBlob], fileName, { type: "image/jpeg" });
 
-            // Use presigned S3 upload URL: request URL, then PUT the file directly to S3
-            const presignResp = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/upload`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ filename: file.name, fileType: file.type }),
-            });
-
-            if (!presignResp.ok) throw new Error('Failed to get upload URL');
-
-            const { uploadUrl, publicUrl } = await presignResp.json();
-
-            await fetch(uploadUrl, {
-                method: 'PUT',
-                headers: { 'Content-Type': file.type },
-                body: file,
-            });
+            const apiBase = import.meta.env.VITE_API_URL || '';
+            const publicUrl = await uploadToS3(file, apiBase);
 
             setProfilePicture(publicUrl);
             setUploading(false);

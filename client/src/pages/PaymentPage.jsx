@@ -102,7 +102,7 @@ const PaymentPage = () => {
         setTimeout(async () => {
             try {
                 const token = localStorage.getItem("token");
-                const response = await fetch(`http://localhost:3000/api/listings/${id}/book`, {
+                const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/listings/${id}/book`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

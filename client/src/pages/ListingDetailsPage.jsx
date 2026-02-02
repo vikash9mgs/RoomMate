@@ -144,7 +144,7 @@ const ListingDetailsPage = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:3000/api/listings/${id}/tour`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/listings/${id}/tour`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -185,7 +185,7 @@ const ListingDetailsPage = () => {
 
         const fetchListing = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/api/listings/${id}`);
+                const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/listings/${id}`);
                 const data = await response.json();
                 if (response.ok) {
                     setListing(data);
@@ -205,7 +205,7 @@ const ListingDetailsPage = () => {
     const handleDelete = async () => {
         const token = localStorage.getItem("token");
         try {
-            const response = await fetch(`http://localhost:3000/api/listings/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/listings/${id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -239,7 +239,7 @@ const ListingDetailsPage = () => {
         const method = isFavorite ? "DELETE" : "PUT";
 
         try {
-            const response = await fetch(`http://localhost:3000/api/auth/favorites/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/auth/favorites/${id}`, {
                 method: method,
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -513,7 +513,7 @@ const ListingDetailsPage = () => {
                                                 src={
                                                     listing.user.profilePicture.startsWith("http")
                                                         ? listing.user.profilePicture
-                                                        : `http://localhost:3000${listing.user.profilePicture}`
+                                                            : `${import.meta.env.VITE_API_URL || ''}${listing.user.profilePicture}`
                                                 }
                                                 alt={listing.user.name}
                                                 className="w-100 h-100 object-fit-cover"
