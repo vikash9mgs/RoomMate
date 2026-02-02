@@ -80,15 +80,16 @@ const PostListing = () => {
     try {
       const uploadedUrls = await Promise.all(
         files.map(async (file) => {
-          const formData = new FormData();
-          formData.append("image", file);
-          const config = {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          };
-          const { data } = await axios.post("http://localhost:3000/api/upload", formData, config);
-          return `http://localhost:3000${data}`;
+          // Request presigned URL then upload directly to S3
+          const presignResp = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/upload`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ filename: file.name, fileType: file.type }),
+          });
+          if (!presignResp.ok) throw new Error('Failed to get upload URL');
+          const { uploadUrl, publicUrl } = await presignResp.json();
+          await fetch(uploadUrl, { method: 'PUT', headers: { 'Content-Type': file.type }, body: file });
+          return publicUrl;
         })
       );
 
@@ -128,8 +129,8 @@ const PostListing = () => {
 
     const token = localStorage.getItem("token");
     const url = isEditMode
-      ? `http://localhost:3000/api/listings/${editListing._id}`
-      : "http://localhost:3000/api/listings";
+      ? `${import.meta.env.VITE_API_URL || ''}/api/listings/${editListing._id}`
+      : `${import.meta.env.VITE_API_URL || ''}/api/listings`;
 
     const method = isEditMode ? "PUT" : "POST";
 

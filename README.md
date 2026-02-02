@@ -344,11 +344,62 @@ PORT=3000
 # Email Configuration (Nodemailer)
 NODEMAILER_USER=your_email@gmail.com
 NODEMAILER_PASS=your_app_password
+
+# Optional: S3 Upload (for serverless uploads)
+S3_BUCKET=your-s3-bucket-name
+S3_REGION=your-s3-region
+S3_KEY=your-aws-access-key-id
+S3_SECRET=your-aws-secret-access-key
+S3_ACL=public-read
 ```
 
 </details>
 
 ---
+
+## ⚡ Vercel Deployment
+
+This repository is a monorepo with a frontend in `client/` and an Express backend in `server/`.
+
+Recommended: deploy the **frontend** to Vercel and host the backend separately (Render, Railway, or a dedicated server). Alternatively, convert the backend into Vercel serverless functions — that requires refactoring `server/` routes into `/api` functions.
+
+- Frontend (Vercel):
+    1. Create a new project in Vercel and import this Git repository.
+    2. Set the project Root to `client` (so Vercel builds the React app).
+    3. Build command: `npm run build` (uses `client/package.json`).
+    4. Output directory: `dist`.
+    5. Add Environment Variable `VITE_API_URL` in the Vercel dashboard: set it to your backend base URL (e.g. `https://your-backend.example.com`) — leave blank to use relative `/api` when backend and frontend are served from the same origin.
+
+- Backend (recommended external hosts):
+    - Host `server/` on Render, Railway, or any Node host. Set these environment variables on the host:
+        - `MONGO_URI` (MongoDB Atlas connection string)
+        - `JWT_SECRET`
+        - `GEMINI_API_KEY` (Google Gemini/GCP key)
+        - `EMAIL_USER` and `EMAIL_PASS` (Nodemailer credentials)
+        - `PORT` (optional)
+    - After hosting the backend, set `VITE_API_URL` in the Vercel project to the backend's base URL.
+
+- Backend on Vercel as Serverless (advanced):
+    - Requires migrating Express routes into Vercel Serverless Functions under an `/api` folder and adjusting `server/index.js` to export compatible handlers.
+    - If you want this route, I can help migrate the routes into serverless functions — tell me and I will scaffold them.
+
+Files added to help deployment:
+- `vercel.json` — builds the frontend from `client/` using `@vercel/static-build`.
+- `client/.env.example` and `server/.env.example` — example env files (do NOT commit secrets).
+
+Security note: Never commit real secrets to the repository. Use Vercel's dashboard (or your host's environment settings) to store `MONGO_URI`, `JWT_SECRET`, `GEMINI_API_KEY`, and email credentials.
+
+Quick local build (frontend):
+```bash
+cd client
+npm install
+npm run build
+```
+
+Deploy with Vercel CLI (optional):
+```bash
+npx vercel --prod --cwd client
+```
 
 ## 🛣 Roadmap
 

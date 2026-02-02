@@ -42,7 +42,7 @@ const ProfilePage = () => {
     const fetchUserProfile = async () => {
         const token = localStorage.getItem("token");
         try {
-            const response = await fetch("http://localhost:3000/api/auth/profile", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/auth/profile`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -107,18 +107,24 @@ const ProfilePage = () => {
             const fileName = `profile-${Date.now()}.jpg`;
             const file = new File([croppedImageBlob], fileName, { type: "image/jpeg" });
 
-            const formData = new FormData();
-            formData.append("image", file);
+            // Use presigned S3 upload URL: request URL, then PUT the file directly to S3
+            const presignResp = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/upload`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ filename: file.name, fileType: file.type }),
+            });
 
-            const config = {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            };
+            if (!presignResp.ok) throw new Error('Failed to get upload URL');
 
-            const { data } = await axios.post("http://localhost:3000/api/upload", formData, config);
+            const { uploadUrl, publicUrl } = await presignResp.json();
 
-            setProfilePicture(`http://localhost:3000${data}`);
+            await fetch(uploadUrl, {
+                method: 'PUT',
+                headers: { 'Content-Type': file.type },
+                body: file,
+            });
+
+            setProfilePicture(publicUrl);
             setUploading(false);
             setItemImageSrc(null);
             setZoom(1);
@@ -137,7 +143,7 @@ const ProfilePage = () => {
         setLoadingListings(true);
         const token = localStorage.getItem("token");
         try {
-            const response = await fetch("http://localhost:3000/api/listings/my-listings", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/listings/my-listings`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -161,7 +167,7 @@ const ProfilePage = () => {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch("http://localhost:3000/api/auth/profile", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/auth/profile`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -200,9 +206,9 @@ const ProfilePage = () => {
                         <img
                             src={
                                 user.profilePicture
-                                    ? (user.profilePicture.startsWith("http")
+                                        ? (user.profilePicture.startsWith("http")
                                         ? user.profilePicture
-                                        : `http://localhost:3000${user.profilePicture}`)
+                                        : `${import.meta.env.VITE_API_URL || ''}${user.profilePicture}`)
                                     : `https://ui-avatars.com/api/?name=${user.name}&background=random&size=200`
                             }
                             alt="Profile"
