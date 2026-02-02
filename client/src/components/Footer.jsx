@@ -67,16 +67,16 @@ const Footer = () => {
         {/* Social Media */}
         <div className="text-center my-4">
           <h6 className="text-uppercase mb-3">Follow Us On</h6>
-          <a href="https://www.facebook.com/profile.php?id=100052449636158" className={`mx-2 ${theme === 'dark' ? 'text-light' : 'text-dark'}`}>
+          <a href="https://www.facebook.com/share/17yNo7vY5U/" className={`mx-2 ${theme === 'dark' ? 'text-light' : 'text-dark'}`}>
             <i className="fab fa-facebook fa-lg" target="_blank"></i>
           </a>
-          <a href="https://www.instagram.com/iamakashsingh9" className={`mx-2 ${theme === 'dark' ? 'text-light' : 'text-dark'}`}>
+          <a href="https://www.instagram.com/vikash007mgs?igsh=dWU1M29rOWF4eWE=" className={`mx-2 ${theme === 'dark' ? 'text-light' : 'text-dark'}`}>
             <i className="fab fa-instagram fa-lg" target="_blank"></i>
           </a>
-          <a href="https://x.com/AkashSingh57860" className={`mx-2 ${theme === 'dark' ? 'text-light' : 'text-dark'}`}>
+          <a href="https://x.com/vikash_mgs99" className={`mx-2 ${theme === 'dark' ? 'text-light' : 'text-dark'}`}>
             <i className="fab fa-twitter fa-lg" target="_blank"></i>
           </a>
-          <a href="https://www.linkedin.com/in/iamakashsingh9/" className={`mx-2 ${theme === 'dark' ? 'text-light' : 'text-dark'}`}>
+          <a href="https://www.linkedin.com/in/vikash-vishwakarma99/?trk=opento_sprofile_details" className={`mx-2 ${theme === 'dark' ? 'text-light' : 'text-dark'}`}>
             <i className="fab fa-linkedin fa-lg" target="_blank"></i>
           </a>
         </div>
