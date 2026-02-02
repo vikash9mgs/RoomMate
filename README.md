@@ -359,47 +359,119 @@ S3_ACL=public-read
 
 ## ⚡ Vercel Deployment
 
-This repository is a monorepo with a frontend in `client/` and an Express backend in `server/`.
+RoomMate is now fully configured for **serverless deployment on Vercel** with AWS S3 for image storage and MongoDB Atlas for the database.
 
-Recommended: deploy the **frontend** to Vercel and host the backend separately (Render, Railway, or a dedicated server). Alternatively, convert the backend into Vercel serverless functions — that requires refactoring `server/` routes into `/api` functions.
+### 🚀 Quick Deploy
 
-- Frontend (Vercel):
-    1. Create a new project in Vercel and import this Git repository.
-    2. Set the project Root to `client` (so Vercel builds the React app).
-    3. Build command: `npm run build` (uses `client/package.json`).
-    4. Output directory: `dist`.
-    5. Add Environment Variable `VITE_API_URL` in the Vercel dashboard: set it to your backend base URL (e.g. `https://your-backend.example.com`) — leave blank to use relative `/api` when backend and frontend are served from the same origin.
+1. **Follow the deployment guide:** [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md) (step-by-step instructions)
+2. **Read the architecture summary:** [DEPLOYMENT_SUMMARY.md](./DEPLOYMENT_SUMMARY.md) (what was built)
+3. **Run the verification script:** `bash verify-deployment.sh` (check your setup)
 
-- Backend (recommended external hosts):
-    - Host `server/` on Render, Railway, or any Node host. Set these environment variables on the host:
-        - `MONGO_URI` (MongoDB Atlas connection string)
-        - `JWT_SECRET`
-        - `GEMINI_API_KEY` (Google Gemini/GCP key)
-        - `EMAIL_USER` and `EMAIL_PASS` (Nodemailer credentials)
-        - `PORT` (optional)
-    - After hosting the backend, set `VITE_API_URL` in the Vercel project to the backend's base URL.
+### 📋 What's Configured
 
-- Backend on Vercel as Serverless (advanced):
-    - Requires migrating Express routes into Vercel Serverless Functions under an `/api` folder and adjusting `server/index.js` to export compatible handlers.
-    - If you want this route, I can help migrate the routes into serverless functions — tell me and I will scaffold them.
+- ✅ **Frontend** (React 19 + Vite) → Auto-deploys to Vercel CDN
+- ✅ **API Functions** (`/api/*`) → Serverless Vercel Functions
+- ✅ **Database** → MongoDB Atlas (managed cloud DB)
+- ✅ **File Storage** → AWS S3 with presigned URLs (no local file system)
+- ✅ **Email** → Nodemailer via Gmail SMTP
+- ✅ **AI Chatbot** → Google Gemini API with local fallback
+- ✅ **Auth** → JWT tokens with MongoDB persistence
 
-Files added to help deployment:
-- `vercel.json` — builds the frontend from `client/` using `@vercel/static-build`.
-- `client/.env.example` and `server/.env.example` — example env files (do NOT commit secrets).
+### 🔧 Required Services
 
-Security note: Never commit real secrets to the repository. Use Vercel's dashboard (or your host's environment settings) to store `MONGO_URI`, `JWT_SECRET`, `GEMINI_API_KEY`, and email credentials.
+Before deploying, sign up for these free-tier services:
+1. **MongoDB Atlas** — Database as a service (https://mongodb.com/cloud/atlas)
+2. **AWS S3** — Image storage (https://aws.amazon.com)
+3. **Google Cloud** — Gemini API for chatbot (https://console.cloud.google.com)
+4. **Gmail** — Email via app passwords (https://myaccount.google.com)
+5. **Vercel** — Hosting (https://vercel.com)
 
-Quick local build (frontend):
+### 📝 Environment Variables Required
+
+Add these 10 variables in Vercel Project Settings → Environment Variables:
+
+```
+MONGO_URI=                 # MongoDB Atlas connection string
+JWT_SECRET=                # Random 32+ character secret
+GEMINI_API_KEY=            # Google Generative AI key
+EMAIL_USER=                # Gmail address
+EMAIL_PASS=                # Gmail app password
+S3_BUCKET=                 # AWS S3 bucket name
+S3_REGION=                 # AWS region (e.g. us-east-1)
+S3_KEY=                    # AWS access key
+S3_SECRET=                 # AWS secret key
+S3_ACL=public-read         # S3 object ACL
+```
+
+See [.env.example](./.env.example) for detailed instructions on generating each value.
+
+### 🧪 Local Testing
+
+**Test the client build:**
 ```bash
 cd client
 npm install
 npm run build
+npm run preview      # Preview production build locally
 ```
 
-Deploy with Vercel CLI (optional):
+**Test full stack with Vercel Dev:**
 ```bash
-npx vercel --prod --cwd client
+npm install -g vercel
+vercel dev           # Runs both frontend + serverless functions
 ```
+
+**Or keep Express server for local dev (optional):**
+```bash
+cd server
+npm install
+npm run dev          # Traditional Express dev server
+```
+
+### 📚 Architecture Highlights
+
+- **Presigned S3 Uploads**: Client gets temporary signed URL, uploads directly to S3 (no server I/O bottleneck)
+- **Connection Pooling**: MongoDB connections cached across serverless invocations
+- **Model Guards**: Mongoose models protected from overwriting in serverless environment
+- **Upload Utility**: Centralized `client/src/utils/uploadUtils.js` for DRY code
+- **Auth Middleware**: Reusable JWT verification in `api/_auth.js`
+- **File Validation**: Server-side checks for file size (10MB max) and type (JPEG/PNG/WebP/GIF)
+
+### 🔐 Security Notes
+
+- **Never commit `.env.local` or real secrets** to Git
+- Use Vercel Dashboard to manage environment variables
+- S3 credentials are only for signed URL generation (not file access)
+- JWT_SECRET must be the same across all Vercel deployments
+- Enable S3 CORS for presigned PUT uploads (see deployment guide)
+
+### 📖 Deploy Checklist
+
+```
+☐ MongoDB Atlas cluster created + whitelist configured
+☐ AWS S3 bucket created + CORS configured
+☐ AWS IAM user with S3 permissions + access key generated
+☐ Google Gemini API key obtained
+☐ Gmail 2FA enabled + app password generated
+☐ JWT secret generated (min 32 characters)
+☐ Repository pushed to GitHub
+☐ Vercel project created + linked to GitHub
+☐ All 10 environment variables added in Vercel
+☐ Deployment successful + all features tested
+☐ Custom domain configured (optional)
+```
+
+### 💡 Pro Tips
+
+- **Monitor**: Check Vercel Function logs in Dashboard → Settings → Function Logs
+- **Debug**: Use `vercel logs` in CLI to see live logs
+- **Optimize**: Serverless functions auto-scale; no cost for idle time
+- **Rollback**: Go to Vercel Dashboard → Deployments, select previous deployment, click "Promote to Production"
+
+---
+
+**Full deployment guide:** [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md)
+**Technical details:** [DEPLOYMENT_SUMMARY.md](./DEPLOYMENT_SUMMARY.md)
 
 ## 🛣 Roadmap
 
