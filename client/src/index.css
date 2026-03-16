@@ -1,0 +1,164 @@
+:root {
+    font-family: 'Outfit', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    /* Modern SaaS Palette - Shared */
+    /* Refined Primary: Slightly deeper cyan/teal for professionalism */
+    --primary-color: #06b6d4;
+    /* Refined Secondary: Deep violet/indigo */
+    --secondary-color: #6366f1;
+    /* refine accent */
+    --accent-color: #ec4899;
+
+    /* Subtler shadow for professionalism */
+    --shadow-neon: 0 4px 20px rgba(6, 182, 212, 0.15);
+}
+
+[data-bs-theme="dark"] {
+    --bg-dark: #0f172a;
+    /* Slate 900 - Richer dark */
+    --bg-card: rgba(30, 41, 59, 0.7);
+    /* Slate 800 with opacity */
+    --text-light: #f1f5f9;
+    --text-dim: #94a3b8;
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --bs-body-bg: #0f172a;
+    --bs-body-color: #e2e8f0;
+    --heading-color: #f8fafc;
+    --card-bg-hover: rgba(51, 65, 85, 0.8);
+}
+
+[data-bs-theme="light"] {
+    --bg-dark: #f8fafc;
+    /* Slate 50 */
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --text-light: #1e293b;
+    --text-dim: #64748b;
+    --border-glass: rgba(0, 0, 0, 0.06);
+    --bs-body-bg: #f8fafc;
+    --bs-body-color: #334155;
+    --heading-color: #0f172a;
+    --card-bg-hover: #ffffff;
+
+    /* Adjusted for visibility on light background */
+    --primary-color: #0891b2;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 242, 255, 0.05) 0%, transparent 20%);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glassmorphism Utilities */
+.glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+    transition: all 0.3s ease;
+    background: var(--card-bg-hover);
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--heading-color);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    border: none;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 242, 255, 0.3);
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(0, 242, 255, 0.5);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-color);
+    color: #000;
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+/* Form Controls */
+.form-control,
+.form-select {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    color: var(--bs-body-color);
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--bg-card);
+    border-color: var(--primary-color);
+    color: var(--bs-body-color);
+    box-shadow: 0 0 0 0.25rem rgba(0, 242, 255, 0.25);
+}
+
+.form-control::placeholder {
+    color: var(--text-dim);
+}
+
+/* Badges */
+.badge-neon {
+    background: rgba(0, 242, 255, 0.1);
+    color: var(--primary-color);
+    border: 1px solid rgba(0, 242, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

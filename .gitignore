@@ -1,0 +1,28 @@
+# Node
+node_modules/
+**/node_modules/
+
+# Environment files
+.env
+client/.env
+server/.env
+
+# Uploads and build outputs
+uploads/
+server/uploads/
+dist/
+build/
+
+# Logs
+.log
+server/server_debug.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+
+# Ignore package lock in server node_modules that may be large
+server/package-lock.json

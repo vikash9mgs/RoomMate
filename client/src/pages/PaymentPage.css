@@ -1,0 +1,146 @@
+/* PaymentPage.css */
+
+.payment-page-container {
+    background: radial-gradient(circle at top left, rgba(62, 166, 255, 0.1), transparent 40%),
+        radial-gradient(circle at bottom right, rgba(255, 107, 107, 0.1), transparent 40%);
+    min-height: 100vh;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dark-mode .glass-card {
+    background: rgba(30, 30, 30, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.payment-method-card {
+    border: 2px solid transparent;
+    /* Reserve space for border */
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.dark-mode .payment-method-card {
+    background: rgba(45, 45, 45, 0.5);
+}
+
+.payment-method-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .payment-method-card:hover {
+    background: rgba(60, 60, 60, 0.8);
+}
+
+.payment-method-card.active {
+    border-color: #0d6efd;
+    background: rgba(13, 110, 253, 0.05);
+}
+
+.dark-mode .payment-method-card.active {
+    border-color: #0d6efd;
+    background: rgba(13, 110, 253, 0.15);
+}
+
+.payment-method-card.active::after {
+    content: "✓";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #0d6efd;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.modern-input {
+    border-radius: 10px !important;
+    padding: 12px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.2s ease;
+}
+
+.dark-mode .modern-input {
+    background: rgba(40, 40, 40, 0.9);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.modern-input:focus {
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.15);
+    border-color: #0d6efd;
+}
+
+.input-icon-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #6c757d;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.dark-mode .input-icon {
+    color: #adafae;
+}
+
+.modern-input.with-icon {
+    padding-left: 45px;
+}
+
+.pay-btn-gradient {
+    background: linear-gradient(135deg, #0d6efd 0%, #0043a8 100%);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+.pay-btn-gradient:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.4);
+}
+
+.pay-btn-gradient:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.summary-item {
+    padding: 12px 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .summary-item {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}

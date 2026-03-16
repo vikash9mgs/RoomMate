@@ -1,0 +1,245 @@
+/* ListingCard.css */
+
+.listing-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  /* For the premium badge */
+  background-color: #fff;
+}
+
+.listing-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.listing-card .row {
+  align-items: center;
+  /* Vertically align image and content */
+}
+
+.listing-img-container {
+  height: 180px;
+  /* Fixed height for consistent image size */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+}
+
+.listing-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Cover the container without distortion */
+}
+
+.listing-card .card-body {
+  padding: 15px;
+}
+
+.listing-card .card-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.listing-card .listing-type,
+.listing-card .listing-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.listing-card .listing-price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #007bff;
+  /* A prominent color for price */
+  margin-top: 10px;
+}
+
+.premium-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ffc107;
+  /* Bootstrap yellow */
+  color: #333;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  z-index: 10;
+}
+
+/* Dark Mode Overrides for Listing Card */
+[data-bs-theme="dark"] .listing-card {
+  background-color: #2b3035;
+  border-color: #495057;
+}
+
+[data-bs-theme="dark"] .listing-card .card-title {
+  color: #f8f9fa;
+}
+
+[data-bs-theme="dark"] .listing-card .listing-type,
+[data-bs-theme="dark"] .listing-card .listing-description {
+  color: #adb5bd;
+}
+
+[data-bs-theme="dark"] .listing-img-container {
+  background-color: #343a40;
+}
+
+[data-bs-theme="dark"] .listing-card .listing-price {
+  color: #6ea8fe;
+  /* Lighter blue for dark mode */
+}
+
+
+/* --------------------------------------------------------------------------- */
+
+
+/* AllListingsPage.css */
+
+.listing-page-container {
+  padding-top: 20px;
+  /* Space from navbar */
+  padding-bottom: 20px;
+}
+
+.listing-cards-column {
+  /* On large screens, this column takes 7 parts */
+  /* On medium/small screens, it will take full width (col-md-12) */
+  padding-right: 25px;
+  /* Space between cards and map */
+}
+
+.map-column {
+  /* On large screens, this column takes 5 parts */
+  /* On medium/small screens, it will take full width (col-md-12) */
+  position: sticky;
+  /* Keep map visible as user scrolls listings */
+  top: 80px;
+  /* Adjust based on your navbar height */
+  height: calc(100vh - 100px);
+  /* Fill remaining viewport height, adjust for footer */
+  overflow: hidden;
+  /* Hide scrollbars if map content exceeds height */
+  padding-left: 0;
+  /* Align map to edge if desired */
+}
+
+@media (max-width: 991.98px) {
+
+  /* Adjust for Bootstrap's lg breakpoint */
+  .listing-cards-column {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .map-column {
+    position: static;
+    /* Remove sticky behavior on smaller screens */
+    height: 400px;
+    /* Give the map a fixed height on smaller screens */
+    margin-top: 30px;
+    /* Space between listings and map on small screens */
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.search-bar-section {
+  background-color: #f8f9fa;
+  /* Light background for search */
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.search-input {
+  border-radius: 0.25rem;
+  border-color: #ced4da;
+}
+
+.search-button {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.results-count {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.listings-header h2 {
+  font-size: 1.8rem;
+  color: #343a40;
+  margin-bottom: 20px;
+}
+
+.map-placeholder {
+  background-color: #e9ecef;
+  border-radius: 8px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 20px;
+  border: 1px dashed #adb5bd;
+}
+
+.map-placeholder h3 {
+  margin-bottom: 10px;
+  color: #495057;
+}
+
+.map-placeholder img {
+  max-width: 80%;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Overrides for All Listings Page */
+[data-bs-theme="dark"] .search-bar-section {
+  background-color: #2b3035;
+  border-color: #495057;
+}
+
+[data-bs-theme="dark"] .results-count {
+  color: #adb5bd;
+}
+
+[data-bs-theme="dark"] .listings-header h2 {
+  color: #f8f9fa;
+}
+
+[data-bs-theme="dark"] .map-placeholder {
+  background-color: #2b3035;
+  border-color: #495057;
+  color: #adb5bd;
+}
+
+[data-bs-theme="dark"] .map-placeholder h3 {
+  color: #f8f9fa;
+}

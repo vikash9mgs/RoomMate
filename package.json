@@ -1,0 +1,11 @@
+{
+  "name": "roommate-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.429.0",
+    "@aws-sdk/s3-request-presigner": "^3.429.0",
+    "uuid": "^9.0.0"
+  }
+}
