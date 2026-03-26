@@ -6,7 +6,7 @@ import "./Chatbot.css";
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hi there! 👋 I’m your RoomMate Assistant — how can I help you today?" },
+    { sender: "bot", text: "Hi there! 👋 I’m your GoStay Assistant — how can I help you today?" },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -73,7 +73,7 @@ const Chatbot = () => {
         <div className="chatbot-window">
           {/* Header */}
           <div className="chatbot-header">
-            RoomMate Assistant 💬
+            GoStay Assistant 💬
           </div>
 
           {/* Messages Area */}

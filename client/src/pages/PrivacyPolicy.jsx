@@ -7,7 +7,7 @@ const PrivacyPolicy = () => {
     <>
       <Navbar />
       <div className="container my-5 d-flex justify-content-center">
-        <div className="card shadow-lg w-100" style={{ maxWidth: "900px", marginTop:"70px"  }}>
+        <div className="card shadow-lg w-100" style={{ maxWidth: "900px", marginTop: "70px" }}>
           <div className="card-body p-5">
             <h1 className="card-title text-center  mb-4">Privacy Policy</h1>
 
@@ -38,7 +38,7 @@ const PrivacyPolicy = () => {
 
             <p className="card-text">
               1. When you provide personal information to us via the Platform,
-              RoomMate (“we", "us", "our”), and in certain instances, as further
+              GoStay (“we", "us", "our”), and in certain instances, as further
               explained in paragraph 2.7 below, the applicable third party, will
               be the data controller in respect of any such personal information
               you submit to us or which we collect from you when you use our

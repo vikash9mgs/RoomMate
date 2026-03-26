@@ -44,7 +44,7 @@ const Listings = () => {
               Explore The Latest
             </h5>
             <h2 className={`fw-bold display-6 mb-3 ${theme === 'dark' ? 'text-light' : 'text-dark'}`}>
-              Room<span className="text-primary">Mate</span> <br />
+              Go<span className="text-primary">Stay</span> <br />
               Listings
             </h2>
             <p className={`small ${theme === 'dark' ? 'text-light opacity-75' : 'text-muted'}`}>

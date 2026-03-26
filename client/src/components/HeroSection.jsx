@@ -59,8 +59,8 @@ const HeroSection = () => {
         <Row className="justify-content-center">
           <Col lg={8} md={10}>
             <h1 className="hero-title">
-              Find Your Perfect <br />
-              <span className="text-primary">RoomMate</span> Today
+              Find Your Comfort Place<br />With
+              <span className="text-success"> GoStay</span>
             </h1>
             <p className="hero-subtitle">
               Join 10,000+ happy users finding rooms and roommates across India.

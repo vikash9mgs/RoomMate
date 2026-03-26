@@ -101,7 +101,7 @@ const NavbarComponent = () => {
             className={`fw-bold fs-4 d-flex align-items-center ${getLinkColor()}`}
             onClick={() => setExpanded(false)}
           >
-            <span className="text-primary me-1">🏠</span> RoomMate
+            <span className="text-primary me-1">🏠</span> GoStay
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={() => setExpanded(expanded ? false : "expanded")} />
           <Navbar.Collapse id="basic-navbar-nav">

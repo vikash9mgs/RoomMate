@@ -38,7 +38,7 @@ router.post("/ask", async (req, res) => {
       `- ${l.type}: ${l.title} in ${l.location} for ₹${l.price}. ${l.description}. Contact: ${l.contactPhone}`
     ).join("\n");
 
-    const systemInstruction = `You are the professional AI Assistant for "RoomMate", a premium platform connecting users with roommates, rooms, coliving spaces, and PGs.
+    const systemInstruction = `You are the professional AI Assistant for "GoStay", a premium platform connecting users with roommates, rooms, coliving spaces, and PGs.
 
     Here is the live data index of currently available listings:
     ${listingsContext}
@@ -76,7 +76,7 @@ router.post("/ask", async (req, res) => {
       const greetings = ['hi', 'hello', 'hey', 'start', 'help', 'assist'];
       if (greetings.some(g => lowerPrompt.includes(g))) {
         return res.json({
-          reply: "Hello! 👋\n\nI am the RoomMate Assistant. I can help you find:\n- 🏠 Rooms & Flatmates\n- 🏢 PGs & Coliving Spaces\n\n**Try asking:**\n- \"PG in Whitefield\"\n- \"Rooms in Bangalore\"\n- \"Show me listings\""
+          reply: "Hello! 👋\n\nI am the GoStay Assistant. I can help you find:\n- 🏠 Rooms & Flatmates\n- 🏢 PGs & Coliving Spaces\n\n**Try asking:**\n- \"PG in Whitefield\"\n- \"Rooms in Bangalore\"\n- \"Show me listings\""
         });
       }
 

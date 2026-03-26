@@ -83,7 +83,7 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <div className="text-center small">
-          RoomMate © 2026. All Rights Reserved
+          GoStay © 2026. All Rights Reserved
         </div>
       </div>
     </footer>

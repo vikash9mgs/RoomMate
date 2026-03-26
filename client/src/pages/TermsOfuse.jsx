@@ -61,7 +61,7 @@ const TermsOfUse = () => {
 
           <section>
             <p>
-              Welcome to RoomMate. These Terms of Use ("Terms") govern your
+              Welcome to GoStay. These Terms of Use ("Terms") govern your
               access to and use of our website, services, and applications
               (collectively, the "Service"). Please read them carefully before
               using the Service.
