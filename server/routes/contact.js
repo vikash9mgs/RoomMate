@@ -37,10 +37,10 @@ router.post("/", async (req, res) => {
         // Email content
         const mailOptions = {
             from: `"${name}" <${email}>`, // Sender address
-            to: "akcollegeuse2025@gmail.com", // Receiver address
+            to: "vikash99mgs@gmail.com", // Receiver address
             subject: `New Contact Form Submission from ${name}`,
             text: `
-        You have received a new message from the RoomMate Contact Form.
+        You have received a new message from the GoStay Contact Form.
         
         Details:
         -------------------------
